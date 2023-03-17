@@ -4,7 +4,7 @@ import axios from "axios";
 function App() {
   return (
     <div className="App">
-      <div className="conatiner">
+      <div className="container">
         <div className="top">
           <div className="location"><p>London</p></div>
           <div className="temperature"><h1>57° F</h1></div>
