@@ -6,7 +6,7 @@ function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${config.API_TOKEN}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${config.API_TOKEN}`;
 
   const searchLocation = (e) => {
     if (e.key === "Enter") {
@@ -32,29 +32,31 @@ function App() {
       <div className="container">
         <div className="top">
           <div className="location">
-            <p>London</p>
+            <p>{data?.name}</p>
           </div>
           <div className="temperature">
-            <h1>57° F</h1>
+            {data.main && <h1>{data.main.temp} °C</h1>}
           </div>
           <div className="description">
-            <p>Cloudy</p>
+            {data.weather && <p>{data.weather[0].main}</p>}
           </div>
         </div>
-        <div className="bottom">
-          <div className="feels">
-            <p className="bold">60° F</p>
-            <p>Feels Like</p>
+        {data.name && (
+          <div className="bottom">
+            <div className="feels">
+              {data.weather && <p className="bold">{data.main.feels_like} °C</p>}
+              <p>Feels Like</p>
+            </div>
+            <div className="humidity">
+              {data.weather && <p className="bold">{data.main.humidity}%</p>}
+              <p>Humidity</p>
+            </div>
+            <div className="wind">
+              {data.weather && <p className="bold">{data.wind.speed} MPH</p>}
+              <p>Wind</p>
+            </div>
           </div>
-          <div className="humidity">
-            <p className="bold">69%</p>
-            <p>Humidity</p>
-          </div>
-          <div className="wind">
-            <p className="bold">8 MPH</p>
-            <p>Wind</p>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
