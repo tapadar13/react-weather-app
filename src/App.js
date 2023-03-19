@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 import config from "./constants/config";
+import axios from "axios";
 
 function App() {
   const [data, setData] = useState({});
