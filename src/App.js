@@ -1,12 +1,11 @@
 import { useState } from "react";
-import config from "./constants/config";
 import axios from "axios";
 
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${config.API_TOKEN}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=89d301dd2f06e313f7aab818db5c995c`;
 
   const searchLocation = (e) => {
     if (e.key === "Enter") {
